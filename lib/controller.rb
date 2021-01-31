@@ -18,5 +18,6 @@ class Controller
 
     def verify_name
         puts "Welcome to the Dungeon #{@user_name}"
+        Api.get_internet
     end
 end

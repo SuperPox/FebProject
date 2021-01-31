@@ -1,6 +1,7 @@
 require 'pry'
+require 'httparty'
 
 require_relative('../lib/controller')
-require_relative('../lib/class1')
+require_relative('../lib/api')
 require_relative('../lib/class2')
 
