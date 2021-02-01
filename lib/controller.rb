@@ -5,7 +5,7 @@ class Controller
     end
     
     def welcome 
-        puts "/// THE DUNGEON ///"
+        puts "/// THE POKEDEX ///"
         self.prompt_for_name
     end
 
@@ -17,7 +17,7 @@ class Controller
     end
 
     def verify_name
-        puts "Welcome to the Dungeon #{@user_name}"
+        puts "Welcome to the ELITE FOUR POKEDEX TEST #{@user_name}"
         Api.get_internet
     end
 end
