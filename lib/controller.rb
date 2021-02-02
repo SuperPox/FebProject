@@ -23,12 +23,13 @@ class Controller
     end
 
     def challenge_select
+        puts "/////////////////////////////////////////////////"
         puts "Please type the number of the challenge you want"
-        puts "1. List Pokemon by Index"
-        puts "3. Exit Program"
+        puts "  1. List Pokemon by Index"
+        puts "  3. Exit Program"
+        puts "/////////////////////////////////////////////////"
         input = gets.strip
         if input == "1" 
-            puts "You Selected: List Pokemon by Index"
             self.pokemon_by_index
         elsif input == "3"
             self.exit_program
@@ -39,18 +40,20 @@ class Controller
     end
 
     def pokemon_by_index
-        Api.get_internet
+        if Pokemon.all == []
+            Api.get_internet
+        end
         testIndex = 0
         currentScore = 0
         while testIndex != Pokemon.all.length # || input.capitalize != "Exit" 
-            puts "What Pokemon is index #{Pokemon.all[testIndex].pokindex}?"
+            puts "// What Pokemon is index #{Pokemon.all[testIndex].pokindex}? //"
             input = gets.strip     
             if input.capitalize == Pokemon.all[testIndex].pokiname
                 currentScore += 1
-                puts "Correct! Your Score is: #{currentScore}"
+                puts "CORRECT! Your Score is: #{currentScore}"
                 testIndex += 1
             elsif input.capitalize == "Exit" 
-                puts "Your final score was #{currentScore}"
+                puts "#{@username} your final score was #{currentScore}"
                 self.verify_name
             else
                 puts "Sorry the correct answer was #{Pokemon.all[testIndex].pokiname}"
@@ -60,6 +63,6 @@ class Controller
     end
 
     def exit_program
-        abort("Thanks for visiting the Elite Four")
+        abort("Thanks for visiting the Elite Four!")
     end
 end
