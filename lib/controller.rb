@@ -55,4 +55,8 @@ class Controller
             end                 
         end
     end
+
+    def exit_program
+        abort("Thanks for visiting the Elite Four")
+    end
 end
