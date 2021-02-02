@@ -25,10 +25,13 @@ class Controller
     def challenge_select
         puts "Please type the number of the challenge you want"
         puts "1. List Pokemon by Index"
+        puts "3. Exit Program"
         input = gets.strip
         if input == "1" 
             puts "You Selected: List Pokemon by Index"
             self.pokemon_by_index
+        elsif input == "3"
+            self.exit_program
         else
             puts "Invalid Input // Please type just a number. Eg: 1 "
             self.verify_name
