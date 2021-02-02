@@ -18,15 +18,15 @@ class Controller
 
     def verify_name
         puts "Welcome to the ELITE FOUR POKEDEX TEST #{@user_name}!"
-        puts "Please type the number of the challenge you want"
-        puts "1. List Pokemon by Index"
         self.challenge_select
         #Api.get_internet
     end
 
     def challenge_select
+        puts "Please type the number of the challenge you want"
+        puts "1. List Pokemon by Index"
         input = gets.strip
-        if input == "1" || "1." || "List Pokemon by Index"
+        if input == "1" 
             puts "You Selected: List Pokemon by Index"
             self.pokemon_by_index
         else
