@@ -38,14 +38,24 @@ class Controller
 
     def pokemon_by_index
         Api.get_internet
-        #binding.pry
-        puts "What Pokemon is index #{Pokemon.all[0].pokindex}?"
-        input = gets.strip
-        if input.capitalize == Pokemon.all[0].pokiname
-            puts "Congratulations!"
-        else
-            puts "The correct answer was #{Pokemon.all[0].pokiname}"
+        testIndex = 0
+        currentScore = 0
+        #input = gets.strip
+        while testIndex != Pokemon.all.length # || input.capitalize != "Exit" 
+            puts "What Pokemon is index #{Pokemon.all[testIndex].pokindex}?"
+            input = gets.strip     
+            if input.capitalize == Pokemon.all[testIndex].pokiname
+                currentScore += 1
+                puts "Correct! Your Score is: #{currentScore}"
+                testIndex += 1
+            elsif input.capitalize == "Exit" || "exit"
+                puts "Exiting Test"
+                break
+                self.verify_name
+            else
+                puts "Sorry the correct answer was #{Pokemon.all[testIndex].pokiname}"
+                testIndex += 1
+            end                 
         end
     end
-
 end
