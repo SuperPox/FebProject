@@ -7,12 +7,10 @@ class Pokemon
         @pokindex = number
         @pokiname = name
         @@all << self
-        #Pokemon.all
     end
 
     def self.all
         @@all
-        #binding.pry
     end
 end
 

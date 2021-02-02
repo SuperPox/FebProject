@@ -1,8 +1,6 @@
 class Api
 
-    def self.get_internet
-
-        
+    def self.get_internet   
         url = URI("https://pokemon-go1.p.rapidapi.com/released_pokemon.json")
 
         http = Net::HTTP.new(url.host, url.port)
@@ -14,11 +12,6 @@ class Api
         request["x-rapidapi-host"] = 'pokemon-go1.p.rapidapi.com'
         
         response = http.request(request)
-        # binding.pry
-        # if response == <Net::HTTPOK 200 OK readbody=true>
-        #     return nil
-        # end
-
         pokemon_id_hash = {}
         pokemon_id_hash = JSON.parse(response.read_body)
 

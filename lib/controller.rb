@@ -17,9 +17,8 @@ class Controller
     end
 
     def verify_name
-        puts "Welcome to the ELITE FOUR POKEDEX TEST #{@user_name}!"
+        puts "Welcome to the ELITE FOUR #{@user_name}!"
         self.challenge_select
-        #Api.get_internet
     end
 
     def challenge_select
