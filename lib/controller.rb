@@ -18,8 +18,7 @@ class Controller
 
     def verify_name
         puts "Welcome to the ELITE FOUR POKEDEX TEST #{@user_name}!"
-        puts "Please Select Your Challenge!"
-        puts "(tip: type the number of the challenge you want)"
+        puts "Please type the number of the challenge you want"
         puts "1. List Pokemon by Index"
         self.challenge_select
         #Api.get_internet
@@ -32,7 +31,7 @@ class Controller
             self.pokemon_by_index
         else
             puts "Invalid Input // Please type just a number. Eg: 1 "
-            #self.verify_name
+            self.verify_name
         end
     end
 
@@ -40,7 +39,6 @@ class Controller
         Api.get_internet
         testIndex = 0
         currentScore = 0
-        #input = gets.strip
         while testIndex != Pokemon.all.length # || input.capitalize != "Exit" 
             puts "What Pokemon is index #{Pokemon.all[testIndex].pokindex}?"
             input = gets.strip     
@@ -48,9 +46,8 @@ class Controller
                 currentScore += 1
                 puts "Correct! Your Score is: #{currentScore}"
                 testIndex += 1
-            elsif input.capitalize == "Exit" || "exit"
-                puts "Exiting Test"
-                break
+            elsif input.capitalize == "Exit" 
+                puts "Your final score was #{currentScore}"
                 self.verify_name
             else
                 puts "Sorry the correct answer was #{Pokemon.all[testIndex].pokiname}"
