@@ -23,12 +23,15 @@ class Controller
 
     def challenge_select
         puts "/////////////////////////////////////////////////"
-        puts "Please type the number of the challenge you want"
-        puts "  1. List Pokemon by Index"
+        puts "Please type the number of the activity you want"
+        puts "  1. Learn: Pokemon by Index"
+        puts "  2. Challenge: List Pokemon by Index"
         puts "  3. Exit Program"
         puts "/////////////////////////////////////////////////"
         input = gets.strip
         if input == "1" 
+            self.index_to_pokemon
+        elsif input == "2"
             self.pokemon_by_index
         elsif input == "3"
             self.exit_program
@@ -38,13 +41,32 @@ class Controller
         end
     end
 
+    def index_to_pokemon
+        if Pokemon.all == []
+            Api.get_internet
+        end
+        testIndex = 0
+        while testIndex != Pokemon.all.length
+            puts "// Learn a Pokemon's Index by typing a number or 'Next' //"
+            input = gets.strip.to_i # 1 will equal index 0
+            if input-1 >= 0 && input <= Pokemon.all.length
+                puts "Pokemon Index #{input} is #{Pokemon.all[input-1].pokiname}"
+            elsif input == 0
+                self.verify_name
+            else 
+                self.verify_name
+            end
+        end
+    end
+
+
     def pokemon_by_index
         if Pokemon.all == []
             Api.get_internet
         end
         testIndex = 0
         currentScore = 0
-        while testIndex != Pokemon.all.length # || input.capitalize != "Exit" 
+        while testIndex != Pokemon.all.length 
             puts "// What Pokemon is index #{Pokemon.all[testIndex].pokindex}? //"
             input = gets.strip     
             if input.capitalize == Pokemon.all[testIndex].pokiname

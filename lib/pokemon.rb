@@ -1,6 +1,5 @@
 class Pokemon
     attr_accessor :pokindex, :pokiname
-
     @@all = []
 
     def initialize(number, name)
