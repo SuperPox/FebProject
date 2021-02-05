@@ -24,9 +24,10 @@ class Controller
     def challenge_select
         puts "/////////////////////////////////////////////////"
         puts "Please type the number of the activity you want"
-        puts "  1. Learn: Pokemon by Index"
+        puts "  1. Learn: Pokemon by Index"    
         puts "  2. Challenge: List Pokemon by Index"
-        puts "  3. Exit Program"
+        puts "  3. Search: Pokemon by First Initial"
+        puts "  4. Exit Program"
         puts "/////////////////////////////////////////////////"
         input = gets.strip
         if input == "1" 
@@ -34,6 +35,8 @@ class Controller
         elsif input == "2"
             self.pokemon_by_index
         elsif input == "3"
+            self.pokemon_by_first_initial
+        elsif input == "4"
             self.exit_program
         else
             puts "Invalid Input // Please type just a number. Eg: 1 "
@@ -42,6 +45,7 @@ class Controller
     end
 
     def index_to_pokemon
+        
         if Pokemon.all == []
             Api.get_internet
         end
@@ -81,6 +85,24 @@ class Controller
             end                 
         end
     end
+
+    def pokemon_by_first_initial
+        if Pokemon.all == []
+            Api.get_internet
+        end
+        testIndex = 0
+        while testIndex != Pokemon.all.length 
+            puts "// Enter a single character to find all the pokemon with that starting initial //"
+            input = gets.strip     
+            if input.capitalize.match(/^[A-Za-z]+$/) != nil && input.capitalize != "Exit" && input.length == 1     
+                puts "Pokemon starting with #{input.capitalize}: #{Pokemon.search(input)}"
+            else
+                self.verify_name
+            end
+        end
+    end
+
+
 
     def exit_program
         abort("Thanks for visiting the Elite Four!")
