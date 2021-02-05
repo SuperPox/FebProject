@@ -47,7 +47,7 @@ class Controller
         end
         testIndex = 0
         while testIndex != Pokemon.all.length
-            puts "// Learn a Pokemon's Index by typing a number or 'Next' //"
+            puts "// Learn a Pokemon's Index by typing a number //"
             input = gets.strip.to_i # 1 will equal index 0
             if input-1 >= 0 && input <= Pokemon.all.length
                 puts "Pokemon Index #{input} is #{Pokemon.all[input-1].pokiname}"
@@ -58,7 +58,6 @@ class Controller
             end
         end
     end
-
 
     def pokemon_by_index
         if Pokemon.all == []
